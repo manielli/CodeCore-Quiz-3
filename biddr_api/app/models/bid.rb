@@ -1,5 +1,6 @@
 class Bid < ApplicationRecord
   belongs_to :auction
+  belongs_to :user
 
   validates(
     :bidding_price,
@@ -8,4 +9,5 @@ class Bid < ApplicationRecord
       greater_than_or_equal_to: 0
     }
   )
+
 end
