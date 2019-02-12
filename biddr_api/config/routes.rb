@@ -7,7 +7,7 @@ Rails.application.routes.draw do
           resources :bids, only: [:create, :destroy]
       end
 
-      resources :session, only: [:create, :destroy]
+      resource :session, only: [:create, :destroy]
 
       resources :users, only: [] do
         get :current, on: :collection
