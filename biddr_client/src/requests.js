@@ -18,6 +18,14 @@ export const Auction = {
                 body: JSON.stringify(params)
             }
         ).then(res => res.json());
+    },
+    destroy(id) {
+        return fetch(
+            `${BASE_URL}/auctions/${id}`, {
+                method: "DELETE",
+                credentials: "include"
+            }
+        ).then(res => res.json());
     }
 };
 

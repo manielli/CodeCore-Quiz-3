@@ -62,7 +62,7 @@ class AuctionShowPage extends Component {
                 <AuctionDetails {...this.state.auction} />
                 <button onClick={this.deleteAuction} >Delete</button>
                 
-                <h2>Bids</h2>
+                <h2>Previsou Bids:</h2>
                 <BidList bids={this.state.auction.bids} onBidDeleteClick={this.deleteBid} />
             </main>
         );
