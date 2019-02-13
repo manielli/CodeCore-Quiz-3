@@ -1,12 +1,12 @@
-import React, { Component } from "../requests";
-import { Session } from "inspector";
+import React, { Component } from "react";
+import { Session } from "../requests";
 
-class SignInPage extends component {
+class SignInPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            error: []
+            errors: []
         };
 
         this.createSession = this.createSession.bind(this);

@@ -1,13 +1,16 @@
 import "../styles/App.css";
 import React, { Component } from "react";
 import AuctionShowPage from "./AuctionShowPage";
-import AuctionIndexPage from "./AuctionIndex Page";
-import { Session } from "../request";
+import AuctionIndexPage from "./AuctionIndexPage";
+import { Session } from "../requests";
 import NavBar from "./NavBar";
 import WelcomePage from "./WelcomePage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignInPage from "./SignInPage";
 import { User } from "../requests";
+import AuthRoute from "./AuthRoute";
+import AuctionNewPage from "./AuctionNewPage";
+import NotFoundPage from "./NotFoundPage"
 
 class App extends Component {
     constructor(props) {
@@ -43,7 +46,7 @@ class App extends Component {
     }
 
     render() {
-        const { loading } = this.state;
+        const { currentUser, loading } = this.state;
         return (
             <BrowserRouter>
                 <div>
@@ -55,10 +58,12 @@ class App extends Component {
                             </main>
                         ) : (
                             <Switch>
+                                <AuthRoute isAuth={currentUser} path="/auctions/new" component={AuctionNewPage} />
                                 <Route path="/" exact component={WelcomePage} />
                                 <Route path="/auctions" exact component={AuctionIndexPage} />
                                 <Route path="/auctions/:id" exact component={AuctionShowPage} />
                                 <Route pat="sign_in" render={routeProps => <SignInPage {...routeProps} onSignIn={this.getCurrentUser} />} />
+                                <Route component={NotFoundPage} />
                             </Switch>
                         )
                     }

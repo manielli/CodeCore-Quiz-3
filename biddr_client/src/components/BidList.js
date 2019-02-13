@@ -6,7 +6,7 @@ const BidList = props => {
         <ul>
             {props.bids.map(bid => (
                 <li key={bid.id} >
-                    <BidDetails {...bid} />
+                    <BidDetails {...bid} onDeleteClick={(id) => props.onBidDeleteClick(id)} />
                 </li>
             ))}
         </ul>

@@ -1,4 +1,4 @@
-import react, { Component } from "react";
+import React, { Component } from "react";
 import AuctionDetails from "./AuctionDetails";
 import BidList from "./BidList";
 
@@ -11,6 +11,10 @@ class AuctionShowPage extends Component {
         this.state = {
             auction: null
         }
+
+        this.deleteAuction = this.deleteAuction.bind(this);
+        this.deleteBid = this.deleteBid.bind(this);
+
     }
     
     componentDidMount() {
@@ -22,6 +26,19 @@ class AuctionShowPage extends Component {
                 loading: false
             })
         })
+    }
+
+    deleteAuction() {
+        this.setState({auction: null});
+    }
+
+    deleteBid(id) {
+        this.setState((state) => ({
+            auction: {
+                ...state.auction,
+                bids: state.auction.bids.filter(b => b.id !== id)
+            }
+        }));
     }
 
     render() {
@@ -43,9 +60,10 @@ class AuctionShowPage extends Component {
         return(
             <main>
                 <AuctionDetails {...this.state.auction} />
+                <button onClick={this.deleteAuction} >Delete</button>
                 
                 <h2>Bids</h2>
-                <BidList bids={this.state.auction.bids} />
+                <BidList bids={this.state.auction.bids} onBidDeleteClick={this.deleteBid} />
             </main>
         );
     }

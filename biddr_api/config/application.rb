@@ -38,7 +38,7 @@ module BiddrApi
           "/api/*",
           headers: :any,
           credentials: true,
-          methods: {:get, :post, :delete, :patch, :put, :options}
+          methods: [:get, :post, :delete, :patch, :put, :options]
         )
       end
     end

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Auction } from "../requests";
 import { Link } from "react-router-dom";
 
@@ -16,6 +16,12 @@ class AuctionIndexPage extends Component {
                 auctions: auctions
             });
         });
+    }
+
+    deleteAuction(id) {
+        this.setState((state, props) => ({
+            auctions: state.auctions.filter(a => a.id !== id)
+        }))
     }
 
     render() {
@@ -38,7 +44,9 @@ class AuctionIndexPage extends Component {
                     {this.state.auctions.map(auction => (
                         <li key={auction.id} >
                             <Link to={`/auctions/${auction.id}`}>{auction.title} </Link> {" "} <br/>
-
+                            <button onClick={event => {
+                                this.deleteAuction(auction.id);
+                            }} >Delete</button>
                         </li>
                     ))}
 

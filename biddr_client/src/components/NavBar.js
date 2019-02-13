@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const NavBar = props => {
-    const { currentUser, onSignOut = () = {} } = props;
+    const { currentUser, onSignOut = () => {} } = props;
 
     const handleSignOutClick = event => {
         event.preventDefault();
@@ -31,3 +31,5 @@ const NavBar = props => {
         </nav>
     )
 }
+
+export default NavBar;
