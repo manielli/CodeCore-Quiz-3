@@ -38,5 +38,9 @@ class Ability
     can(:crud, Bid) do |bid|
       bid.user == user
     end
+
+    can(:bid, Auction) do |auction|
+      user.persisted? && auction.user != user
+    end
   end
 end
