@@ -55,7 +55,8 @@ class SignInPage extends Component {
                     <div>
                         <label htmlFor="password">Password</label> <br/>
                         <input type="password" name="password" id="password" />
-                    </div>
+                    </div> 
+                    <br/>
                     <input type="submit" value="Sign In" />
                 </form>
             </main>
